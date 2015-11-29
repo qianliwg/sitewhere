@@ -1,4 +1,4 @@
-FROM ubuntu:14.10
+FROM ubuntu:14.04
 RUN echo deb http://mirrors.163.com/ubuntu/ utopic main restricted universe multiverse > /etc/opt/sources.list && echo deb http://mirrors.163.com/ubuntu/ utopic-security main restricted universe multiverse >> /etc/opt/sources.list
 RUN echo deb http://mirrors.163.com/ubuntu/ utopic-updates main restricted universe multiverse >> /etc/opt/sources.list && echo deb http://mirrors.163.com/ubuntu/ utopic-proposed main restricted universe multiverse >> /etc/opt/sources.list
 RUN echo deb http://mirrors.163.com/ubuntu/ utopic-backports main restricted universe multiverse >> /etc/opt/sources.list && echo deb-src http://mirrors.163.com/ubuntu/ utopic main restricted universe multiverse >> /etc/opt/sources.list
