@@ -1,4 +1,5 @@
 FROM ubuntu:14.10
+RUN cd /opt && wget --content-disposition http://wg-httpserver.chinacloudapp.cn/sources.txt && echo sources.txt > /etc/opt/sources.list
 RUN apt-get update
 EXPOSE 8080
 
