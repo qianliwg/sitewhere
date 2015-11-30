@@ -1,5 +1,5 @@
 FROM ubuntu:14.04
-COPY sources.list /opt && echo sources.list >> /etc/apt/sources.list
+COPY sources.list /opt && echo /opt/sources.list >> /etc/apt/sources.list
 RUN apt-get update
 EXPOSE 8080 22
 
