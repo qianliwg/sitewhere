@@ -1,13 +1,10 @@
 FROM ubuntu:14.04
-RUN echo deb http://mirrors.163.com/ubuntu/ utopic main restricted universe multiverse > /etc/opt/sources.list && echo deb http://mirrors.163.com/ubuntu/ utopic-security main restricted universe multiverse >> /etc/opt/sources.list
-RUN echo deb http://mirrors.163.com/ubuntu/ utopic-updates main restricted universe multiverse >> /etc/opt/sources.list && echo deb http://mirrors.163.com/ubuntu/ utopic-proposed main restricted universe multiverse >> /etc/opt/sources.list
-RUN echo deb http://mirrors.163.com/ubuntu/ utopic-backports main restricted universe multiverse >> /etc/opt/sources.list && echo deb-src http://mirrors.163.com/ubuntu/ utopic main restricted universe multiverse >> /etc/opt/sources.list
-RUN echo deb-src http://mirrors.163.com/ubuntu/ utopic-security main restricted universe multiverse >> /etc/opt/sources.list && echo deb-src http://mirrors.163.com/ubuntu/ utopic-updates main restricted universe multiverse >> /etc/opt/sources.list
-RUN echo deb-src http://mirrors.163.com/ubuntu/ utopic-proposed main restricted universe multiverse >> /etc/opt/sources.list && echo deb-src http://mirrors.163.com/ubuntu/ utopic-backports main restricted universe multiverse >> /etc/opt/sources.list
+COPY sources.list /opt && echo sources.list >> /etc/apt/sources.list
 RUN apt-get update
-EXPOSE 8080
+EXPOSE 8080 22
 
-RUN apt-get install -y unzip wget openjdk-7-jdk
+RUN apt-get install -y unzip ssh wget openjdk-7-jdk
+RUN useradd wg && echo wg:Aa1 | chpasswd
 
 RUN cd /opt && wget --content-disposition https://s3.amazonaws.com/sitewhere/sitewhere-server-1.0.3.zip && unzip sitewhere-server-1.0.3.zip && echo "1"
 ENV CATALINA_BASE="/opt/sitewhere-server-1.0.3" CATALINA_HOME="/opt/sitewhere-server-1.0.3"
